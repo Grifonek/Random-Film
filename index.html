@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random movies generator</title>
+
+    <link rel="stylesheet" href="style.css">
+    <script type="module" src="script.js"></script>
+
+</head>
+<body>
+    <section class="main">
+        <div class="main-container">
+            <div class="main-generate"><p>One random movie to watch!</p></div>
+            <div class="main-specifications">Or add more specification...</div>
+        </div>
+    </section>
+
+    <section class="specs" style="display: none;">
+        <div class="specs-container">
+            <label for="genre"><span>Movie genre:</span>
+                <select name="genre" class="select-field">
+                    <option value="" disabled selected hidden>Select genre</option>
+                    <option value="none">None</option>
+                </select>
+            </label>
+            <label for="rating"><span>Rating:</span>
+                <select name="rating" class="select-field" id="rating">
+                    <option value="" disabled selected hidden>Select rating</option>
+                    <option value="highest">Highest rated</option>
+                    <option value="lowest">Lowest rated</option>
+                </select>
+            </label>
+        </div>
+        <div class="specs-btns">
+            <div class="left-btn">Generate movie to watch!</div>
+            <div class="right-btn">Generate 3 movies to watch!</div>
+        </div>
+    </section>
+
+    <section class="movies" style="display: none;">
+        <div class="movies-container">
+            <!-- <article class="movie" style="background-image: url(${matchedMovie.primaryImage.url});">
+                <div class="movie-data">
+                    <h3 class="movie-name">Movie</h3>
+                    <p class="movie-genre">🎬</p>
+                    <p class="movie-rating">🌍 Rating: </p>
+                </div>
+            </article> -->
+        </div>
+    </section>
+
+</body>
+</html>

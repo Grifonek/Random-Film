@@ -1,0 +1,172 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+html {
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: white;
+    font-weight: bold;
+}
+
+/* MAIN */
+.main-container {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    justify-content: flex-start;
+    margin: auto;
+    margin-top: 3rem;
+    width: 30rem;
+    height: 15rem;
+}
+
+.main-generate {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 80%;
+    background-color: rgb(51, 95, 238);;
+    border-radius: 15px;
+    margin-bottom: 1rem;
+    cursor: pointer;
+    font-size: 2rem;
+}
+
+.main-specifications {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    flex-grow: 1;
+    border-radius: 10px;
+    height: 20%;
+    background-color: rgb(51, 95, 238);
+    cursor: pointer;
+    font-size: 1.5rem;
+}
+
+/* SPECS */
+.specs-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    margin-top: 10rem;
+    width: 50rem;
+    height: 10rem;
+    background-color: rgb(51, 95, 238);
+    padding: 1rem;
+    border-radius: 20px;
+}
+
+.specs-container label {
+    margin-right: 3rem;
+}
+
+.specs-btns {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: auto;
+    margin-top: 1rem;
+    width: 50rem;
+    height: 5rem;
+    background-color: rgb(51, 95, 238);
+    border: 10px solid rgb(228, 228, 228);
+    border-radius: 10px;
+    font-size: 1.5rem;
+}
+
+.left-btn {
+    float: left;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    height: 5rem;
+    border: 10px solid rgb(228, 228, 228);
+    border-radius: 10px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-left: 5px;
+}
+
+.right-btn {
+    float: right;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    height: 5rem;
+    border: 10px solid rgb(228, 228, 228);
+    border-radius: 10px;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border-left: 5px;
+    border-right: 5px;
+}
+
+/* MOVIES */
+.movies-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2rem;
+    font-size: 1.5rem;
+    transition: opacity 1s;
+}
+
+.movie {
+    background-color: rgb(51, 95, 238);
+    box-shadow: 0 2rem 5rem 1rem rgba(0, 0, 0, 0.1);
+    width: 30rem;
+    height: 43rem;
+    border-radius: 0.7rem;
+    margin-left: 1rem;
+    color: rgb(233, 231, 231);
+    background-size: cover;
+    background-position: center;
+    text-shadow: 3px 3px 5px #000;
+    -moz-text-shadow: 3px 3px 5px #000;
+    -webkit-text-shadow: 3px 3px 5px #000;
+}
+
+.movie-data {
+    padding: 2.5rem 3rem 3rem 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.movie-name {
+    font-size: 4rem;
+    margin-bottom: 2rem;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+}
+
+.movie-genre {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2rem;
+    font-size: 2rem;
+}
+
+.movie-rating {
+    display: flex;
+    justify-content: center;
+    font-size: 2rem;
+}
