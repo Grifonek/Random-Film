@@ -89,38 +89,26 @@ const fetchMovies = async () => {
   }
 };
 
-let movieFetchingInProgress = false; // Initialize flag variable for randomMovieBtn button
+let movieFetchingInProgress = false;
 
 randomMovieBtn.addEventListener("click", async () => {
-  // Check if movie fetching process is already in progress
   if (movieFetchingInProgress) {
-    return; // Exit early if movie fetching is already in progress
+    return;
   }
 
-  // Set the flag variable to true to indicate that movie fetching is in progress
   movieFetchingInProgress = true;
 
   try {
-    // Fetch movies and display them
     await fetchMovies();
 
-    // Hide the main section and display the movies section
     main.style.display = "none";
     movies.style.display = "";
   } catch (error) {
     console.error("An error occurred during movie fetching:", error);
   } finally {
-    // Reset the flag variable after the movie fetching process is complete
     movieFetchingInProgress = false;
   }
 });
-
-// randomMovieBtn.addEventListener("click", async () => {
-//   await fetchMovies();
-
-//   main.style.display = "none";
-//   movies.style.display = "";
-// });
 
 const selectingGenres = async () => {
   const url = `https://moviesdatabase.p.rapidapi.com/titles/utils/genres`;
@@ -163,7 +151,6 @@ const lowestRatedMovies = async () => {
     }
 
     while (limit <= 100) {
-      // Set the desired number of API calls
       const response = await fetch(url, options);
       const data = await response.json();
 
@@ -274,18 +261,15 @@ const highestRatedMovies = async () => {
   }
 };
 
-let movieGenerationInProgress = false; // Initialize flag variable
+let movieGenerationInProgress = false;
 
 generateOneMovie.addEventListener("click", async () => {
-  // Check if movie generation process is already in progress
   if (movieGenerationInProgress) {
-    return; // Exit early if movie generation is already in progress
+    return;
   }
 
-  // Set the flag variable to true to indicate that movie generation is in progress
   movieGenerationInProgress = true;
 
-  // Disable the button to prevent multiple clicks
   generateOneMovie.disabled = true;
 
   try {
@@ -297,28 +281,23 @@ generateOneMovie.addEventListener("click", async () => {
   } catch (error) {
     console.error("An error occurred during movie generation:", error);
   } finally {
-    // Reset the flag variable and re-enable the button after the movie generation process is complete
     movieGenerationInProgress = false;
     generateOneMovie.disabled = false;
   }
 });
 
-let movieGenerationInProgressThree = false; // Initialize flag variable for generateThreeMovies button
+let movieGenerationInProgressThree = false;
 
 generateThreeMovies.addEventListener("click", async () => {
-  // Check if movie generation process is already in progress
   if (movieGenerationInProgressThree) {
-    return; // Exit early if movie generation is already in progress
+    return;
   }
 
-  // Set the flag variable to true to indicate that movie generation is in progress
   movieGenerationInProgressThree = true;
 
-  // Disable the button to prevent multiple clicks
   generateThreeMovies.disabled = true;
 
   try {
-    // Generate three movies based on the selected rating
     if (ratingField.value === "lowest") {
       await lowestRatedMovies();
       await lowestRatedMovies();
@@ -331,31 +310,10 @@ generateThreeMovies.addEventListener("click", async () => {
   } catch (error) {
     console.error("An error occurred during movie generation:", error);
   } finally {
-    // Reset the flag variable and re-enable the button after the movie generation process is complete
     movieGenerationInProgressThree = false;
     generateThreeMovies.disabled = false;
   }
 });
-
-// generateOneMovie.addEventListener("click", () => {
-//   if (ratingField.value === "lowest") {
-//     lowestRatedMovies();
-//   } else if (ratingField.value === "highest") {
-//     highestRatedMovies();
-//   }
-// });
-
-// generateThreeMovies.addEventListener("click", () => {
-//   if (ratingField.value === "lowest") {
-//     lowestRatedMovies();
-//     lowestRatedMovies();
-//     lowestRatedMovies();
-//   } else if (ratingField.value === "highest") {
-//     highestRatedMovies();
-//     highestRatedMovies();
-//     highestRatedMovies();
-//   }
-// });
 
 const director = async (id) => {
   const url = `https://moviesdatabase.p.rapidapi.com/titles/${id}?info=creators_directors_writers`;
