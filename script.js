@@ -10,6 +10,7 @@ const genresField = document.querySelector(".select-field");
 const generateOneMovie = document.querySelector(".left-btn");
 const generateThreeMovies = document.querySelector(".right-btn");
 const ratingField = document.querySelector("#rating");
+const spinnerContainer = document.querySelector(".spinner-container");
 
 const options = {
   method: "GET",
@@ -21,7 +22,24 @@ const options = {
 
 let randomFilm;
 
+const renderSpinner = () => {
+  const markup = `
+      <div class="spinner">
+          <svg>
+              <use href="#icon-loader"></use>
+          </svg>
+      </div>
+  `;
+  spinnerContainer.innerHTML = markup;
+};
+
+const clearSpinner = () => {
+  spinnerContainer.innerHTML = "";
+};
+
 const fetchMovies = async () => {
+  renderSpinner();
+
   const limit = 50;
   let totalMovies = [];
   let allGenres = [];
@@ -86,6 +104,8 @@ const fetchMovies = async () => {
     renderGenreAndImg();
   } catch (error) {
     console.error(error);
+  } finally {
+    clearSpinner();
   }
 };
 
@@ -136,6 +156,8 @@ moreSpecs.addEventListener("click", () => {
 });
 
 const lowestRatedMovies = async () => {
+  renderSpinner();
+
   const selectedGenre = genresField.value;
 
   let limit = 10;
@@ -191,14 +213,18 @@ const lowestRatedMovies = async () => {
     };
     render();
 
-    director(randomFilmLowest.id);
+    // director(randomFilmLowest.id);
   } catch (error) {
     alert("Film with these specification do not exist. 🤷‍♂️");
     console.error(error);
+  } finally {
+    clearSpinner();
   }
 };
 
 const highestRatedMovies = async () => {
+  renderSpinner();
+
   const selectedGenre = genresField.value;
 
   let limit = 50;
@@ -254,10 +280,12 @@ const highestRatedMovies = async () => {
     };
     render();
 
-    director(randomFilmHighest.id);
+    // director(randomFilmHighest.id);
   } catch (error) {
     alert("Film with these specification do not exist. 🤷‍♂️");
     console.error(error);
+  } finally {
+    clearSpinner();
   }
 };
 
@@ -315,14 +343,14 @@ generateThreeMovies.addEventListener("click", async () => {
   }
 });
 
-const director = async (id) => {
-  const url = `https://moviesdatabase.p.rapidapi.com/titles/${id}?info=creators_directors_writers`;
+// const director = async (id) => {
+//   const url = `https://moviesdatabase.p.rapidapi.com/titles/${id}?info=creators_directors_writers`;
 
-  try {
-    const response = await fetch(url, options);
-    const data = await response.json();
-    // console.log(data);
-  } catch (error) {
-    console.error(error);
-  }
-};
+//   try {
+//     const response = await fetch(url, options);
+//     const data = await response.json();
+//     // console.log(data);
+//   } catch (error) {
+//     console.error(error);
+//   }
+// };
