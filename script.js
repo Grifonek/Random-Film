@@ -49,6 +49,15 @@ const fetchMovies = async () => {
       const url = `https://moviesdatabase.p.rapidapi.com/titles/random?list=top_rated_english_250&limit=${limit}`;
 
       const response = await fetch(url, options);
+
+      if (!response.ok) {
+        throw new Error(
+          alert(
+            `❌ API is currently not working. Try it again later... Error ${response.status}`
+          )
+        );
+      }
+
       const data = await response.json();
 
       // Check if the response contains results
@@ -215,8 +224,11 @@ const lowestRatedMovies = async () => {
 
     // director(randomFilmLowest.id);
   } catch (error) {
-    alert("Film with these specification do not exist. 🤷‍♂️");
-    console.error(error);
+    if (error instanceof TypeError || error.message === "Failed to fetch") {
+      alert("❌ API is currently not working. Try again later.");
+    } else {
+      alert("Film with these specifications do not exist. 🤷‍♂️");
+    }
   } finally {
     clearSpinner();
   }
@@ -282,8 +294,11 @@ const highestRatedMovies = async () => {
 
     // director(randomFilmHighest.id);
   } catch (error) {
-    alert("Film with these specification do not exist. 🤷‍♂️");
-    console.error(error);
+    if (error instanceof TypeError || error.message === "Failed to fetch") {
+      alert("❌ API is currently not working. Try again later.");
+    } else {
+      alert("Film with these specifications do not exist. 🤷‍♂️");
+    }
   } finally {
     clearSpinner();
   }
@@ -342,15 +357,3 @@ generateThreeMovies.addEventListener("click", async () => {
     generateThreeMovies.disabled = false;
   }
 });
-
-// const director = async (id) => {
-//   const url = `https://moviesdatabase.p.rapidapi.com/titles/${id}?info=creators_directors_writers`;
-
-//   try {
-//     const response = await fetch(url, options);
-//     const data = await response.json();
-//     // console.log(data);
-//   } catch (error) {
-//     console.error(error);
-//   }
-// };
